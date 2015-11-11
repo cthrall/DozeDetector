@@ -7,9 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <opencv2/objdetect/objdetect.hpp>
+#import <opencv2/videoio/cap_ios.h>
 
-@interface ViewController : UIViewController
+using namespace cv;
 
+@interface ViewController : UIViewController<CvVideoCameraDelegate>
+{
+    __weak IBOutlet UIImageView *imageView;
+    CvVideoCamera* videoCamera;
+    CascadeClassifier faceCascade;
+    CascadeClassifier eyeCascade;
+    std::vector<cv::Rect> faces;
+    std::vector<cv::Rect> eyes;
+}
+
+@property (nonatomic, retain) CvVideoCamera* videoCamera;
 
 @end
-
