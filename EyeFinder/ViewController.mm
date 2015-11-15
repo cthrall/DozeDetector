@@ -34,6 +34,11 @@
     
     faceCascade.load([facePath UTF8String]);
     eyeCascade.load([eyePath UTF8String]);
+    
+    eyeAccum = 0;
+    sampleCount = 0;
+    
+    startTime = CACurrentMediaTime();
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,13 +64,33 @@
     int haarFlags = 0 | CV_HAAR_DO_CANNY_PRUNING;
     // int haarFlags = 0 | CV_HAAR_SCALE_IMAGE
     
-    faceCascade.detectMultiScale(image, faces, haarScale, minNeighbors, haarFlags, minSize);
-    NSLog(@"Found %d faces", faces.size());
-    
-    for (int i = 0; i < faces.size(); i++) {
-        eyeCascade.detectMultiScale(image(faces[i]), eyes, haarScale, 2, haarFlags, cvSize(20, 20));
+    if (faces.size() < 1) {
+        faceCascade.detectMultiScale(image, faces, haarScale, minNeighbors, haarFlags, minSize);
+        //NSLog(@"Found %d faces", faces.size());
     }
-    NSLog(@"Found %d eyes", eyes.size());
+    
+    if (faces.size() > 0) {
+        eyeCascade.detectMultiScale(image(faces[0]), eyes, haarScale, 2, haarFlags, cvSize(20, 20));
+        //NSLog(@"Found %d eyes", eyes.size());
+        
+        eyeAccum += eyes.size();
+        sampleCount++;
+    }
+    
+    CFTimeInterval sampleTime = CACurrentMediaTime();
+    //NSLog(@"%f %f %f", sampleTime, startTime, samplePeriod);
+    if (sampleTime - startTime > samplePeriod) {
+        if (sampleCount > minSampleCount) {
+            percentOpen = (eyeAccum / sampleCount) * 100;
+            NSLog(@"Open: %f", percentOpen);
+        } else {
+            NSLog(@"Not enough samples");
+        }
+        
+        eyeAccum = 0;
+        sampleCount = 0;
+        startTime = sampleTime;
+    }
 }
 #endif
 
