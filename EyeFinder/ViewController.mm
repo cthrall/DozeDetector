@@ -22,6 +22,23 @@
     /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello!" message:@"Welcome" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
     [alert show];*/
     
+    calibrated = false;
+    
+    self.speechUtterance = [[AVSpeechUtterance alloc] initWithString:@"Wake up!"];
+    
+    NSArray* voices = [AVSpeechSynthesisVoice speechVoices];
+    for (AVSpeechSynthesisVoice* voice in voices) {
+        if (voice &&
+            [voice.language isEqual: @"en-US"]) {
+            NSLog(@"Name: %@ Language: %@", voice.name, voice.language);
+            self.speechUtterance.voice = voice;
+            break;
+        }
+    }
+    
+    self.speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
+    self.speechSynthesizer.delegate = self;
+    
     self.videoCamera = [[CvVideoCamera alloc] initWithParentView:imageView];
     self.videoCamera.delegate = self;
     self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
@@ -50,6 +67,15 @@
     [self.videoCamera start];
 }
 
+- (IBAction)calibrateClick:(id)sender {
+    NSLog(@"Calibrating");
+    calibrated = false;
+}
+
+- (void) speechSynthesizer:(AVSpeechSynthesizer *)synthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance {
+    NSLog(@"Done talking");
+}
+
 // TODO: add "Calibrate" button, rename "Button" to "Detect"
 // TODO: add number of eyes on screen
 // TODO: show alert
@@ -64,9 +90,13 @@
     int haarFlags = 0 | CV_HAAR_DO_CANNY_PRUNING;
     // int haarFlags = 0 | CV_HAAR_SCALE_IMAGE
     
-    if (faces.size() < 1) {
-        faceCascade.detectMultiScale(image, faces, haarScale, minNeighbors, haarFlags, minSize);
-        //NSLog(@"Found %d faces", faces.size());
+    if (!calibrated) {
+        if (faces.size() < 1) {
+            faceCascade.detectMultiScale(image, faces, haarScale, minNeighbors, haarFlags, minSize);
+            NSLog(@"Found %d faces", faces.size());
+        }
+        
+        calibrated = true;
     }
     
     if (faces.size() > 0) {
@@ -74,7 +104,7 @@
         //NSLog(@"Found %d eyes", eyes.size());
         
         eyeAccum += eyes.size();
-        sampleCount++;
+        sampleCount += 2;
     }
     
     CFTimeInterval sampleTime = CACurrentMediaTime();
@@ -82,7 +112,15 @@
     if (sampleTime - startTime > samplePeriod) {
         if (sampleCount > minSampleCount) {
             percentOpen = (eyeAccum / sampleCount) * 100;
-            NSLog(@"Open: %f", percentOpen);
+            if (percentOpen < 80) {
+                NSLog(@"Under threshold %f", percentOpen);
+                if (!self.speechSynthesizer.isSpeaking) {
+                    NSLog(@"Speaking");
+                    [self.speechSynthesizer speakUtterance:self.speechUtterance];
+                }
+            } else {
+                NSLog(@"Over threshold: %f", percentOpen);
+            }
         } else {
             NSLog(@"Not enough samples");
         }

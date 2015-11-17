@@ -19,7 +19,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmg-bx-ALI">
                                 <rect key="frame" x="277" y="562" width="46" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Detect"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchDown" id="3m8-E1-peK"/>
                                 </connections>
@@ -28,6 +28,15 @@
                                 <rect key="frame" x="20" y="0.0" width="469" height="533"/>
                                 <animations/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfO-jS-qmv">
+                                <rect key="frame" x="119" y="562" width="62" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Calibrate"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchDown" id="W4j-JF-aIh"/>
+                                    <action selector="calibrateClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="55K-EP-Qdu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
