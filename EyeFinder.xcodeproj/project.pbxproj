@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		200F170C1BEDBB3100D4DED8 /* haarcascade_frontalface_alt2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 200F170B1BEDBB3100D4DED8 /* haarcascade_frontalface_alt2.xml */; };
 		200F170E1BEDBB4400D4DED8 /* haarcascade_eye.xml in Resources */ = {isa = PBXBuildFile; fileRef = 200F170D1BEDBB4400D4DED8 /* haarcascade_eye.xml */; };
+		200F17101BFFF45200D4DED8 /* haarcascade_mcs_eyepair_small.xml in Resources */ = {isa = PBXBuildFile; fileRef = 200F170F1BFFF45100D4DED8 /* haarcascade_mcs_eyepair_small.xml */; };
+		200F17151C01485900D4DED8 /* ImageProcessor.mm in Sources */ = {isa = PBXBuildFile; fileRef = 200F17141C01485900D4DED8 /* ImageProcessor.mm */; };
+		200F17181C026BEE00D4DED8 /* SpeechAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 200F17171C026BEE00D4DED8 /* SpeechAlert.m */; };
 		206710F41BE6C2C800613C7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 206710F31BE6C2C800613C7D /* main.m */; };
 		206710F71BE6C2C800613C7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 206710F61BE6C2C800613C7D /* AppDelegate.m */; };
 		206710FA1BE6C2C800613C7D /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 206710F91BE6C2C800613C7D /* ViewController.mm */; };
@@ -49,6 +52,11 @@
 /* Begin PBXFileReference section */
 		200F170B1BEDBB3100D4DED8 /* haarcascade_frontalface_alt2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_frontalface_alt2.xml; path = cascades/haarcascade_frontalface_alt2.xml; sourceTree = "<group>"; };
 		200F170D1BEDBB4400D4DED8 /* haarcascade_eye.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_eye.xml; path = cascades/haarcascade_eye.xml; sourceTree = "<group>"; };
+		200F170F1BFFF45100D4DED8 /* haarcascade_mcs_eyepair_small.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_mcs_eyepair_small.xml; path = cascades/haarcascade_mcs_eyepair_small.xml; sourceTree = "<group>"; };
+		200F17141C01485900D4DED8 /* ImageProcessor.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageProcessor.mm; sourceTree = "<group>"; };
+		200F17161C01488400D4DED8 /* ImageProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProcessor.h; sourceTree = "<group>"; };
+		200F17171C026BEE00D4DED8 /* SpeechAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeechAlert.m; sourceTree = "<group>"; };
+		200F17191C026C1D00D4DED8 /* SpeechAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechAlert.h; sourceTree = "<group>"; };
 		206710EF1BE6C2C800613C7D /* EyeFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EyeFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		206710F31BE6C2C800613C7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		206710F51BE6C2C800613C7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -152,10 +160,14 @@
 				206710F61BE6C2C800613C7D /* AppDelegate.m */,
 				206710F81BE6C2C800613C7D /* ViewController.h */,
 				206710F91BE6C2C800613C7D /* ViewController.mm */,
+				200F17141C01485900D4DED8 /* ImageProcessor.mm */,
+				200F17161C01488400D4DED8 /* ImageProcessor.h */,
 				206710FE1BE6C2C800613C7D /* Assets.xcassets */,
 				206711031BE6C2C800613C7D /* Info.plist */,
 				206710F21BE6C2C800613C7D /* Supporting Files */,
 				206711291BE6C45800613C7D /* EyeFinder-Prefix.pch */,
+				200F17171C026BEE00D4DED8 /* SpeechAlert.m */,
+				200F17191C026C1D00D4DED8 /* SpeechAlert.h */,
 			);
 			path = EyeFinder;
 			sourceTree = "<group>";
@@ -163,6 +175,7 @@
 		206710F21BE6C2C800613C7D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				200F170F1BFFF45100D4DED8 /* haarcascade_mcs_eyepair_small.xml */,
 				200F170B1BEDBB3100D4DED8 /* haarcascade_frontalface_alt2.xml */,
 				200F170D1BEDBB4400D4DED8 /* haarcascade_eye.xml */,
 				206710F31BE6C2C800613C7D /* main.m */,
@@ -296,6 +309,7 @@
 				206710FF1BE6C2C800613C7D /* Assets.xcassets in Resources */,
 				200F170C1BEDBB3100D4DED8 /* haarcascade_frontalface_alt2.xml in Resources */,
 				206711361BE9B7F500613C7D /* Main.storyboard in Resources */,
+				200F17101BFFF45200D4DED8 /* haarcascade_mcs_eyepair_small.xml in Resources */,
 				200F170E1BEDBB4400D4DED8 /* haarcascade_eye.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +337,9 @@
 			files = (
 				206710FA1BE6C2C800613C7D /* ViewController.mm in Sources */,
 				206710F71BE6C2C800613C7D /* AppDelegate.m in Sources */,
+				200F17151C01485900D4DED8 /* ImageProcessor.mm in Sources */,
 				206710F41BE6C2C800613C7D /* main.m in Sources */,
+				200F17181C026BEE00D4DED8 /* SpeechAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

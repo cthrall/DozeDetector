@@ -7,36 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <opencv2/objdetect/objdetect.hpp>
-#import <opencv2/videoio/cap_ios.h>
-#import <QuartzCore/QuartzCore.h>
-#import <AVFoundation/AVFoundation.h>
+#import "ImageProcessor.h"
 
-using namespace cv;
-
-const NSTimeInterval samplePeriod = 1;
-const int minSampleCount = 3;
-
-@interface ViewController : UIViewController<AVSpeechSynthesizerDelegate,CvVideoCameraDelegate>
+@interface ViewController : UIViewController
 {
     __weak IBOutlet UIImageView *imageView;
-    CvVideoCamera* videoCamera;
-    
-    CascadeClassifier faceCascade;
-    CascadeClassifier eyeCascade;
-    std::vector<cv::Rect> faces;
-    std::vector<cv::Rect> eyes;
-    
-    CFTimeInterval startTime;
-    uint32_t eyeAccum;
-    uint32_t sampleCount;
-    float percentOpen;
-    
-    bool calibrated;
+    ImageProcessor* imageProcessor;
 }
-
-@property (nonatomic, retain) AVSpeechUtterance* speechUtterance;
-@property (nonatomic, retain) AVSpeechSynthesizer *speechSynthesizer;
-@property (nonatomic, retain) CvVideoCamera* videoCamera;
 
 @end
