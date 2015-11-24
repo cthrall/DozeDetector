@@ -49,11 +49,6 @@
     calibrated = false;
 }
 
-// TODO: add "Calibrate" button, rename "Button" to "Detect"
-// TODO: add number of eyes on screen
-// TODO: show alert
-// TODO: filter eye count
-
 #ifdef __cplusplus
 - (void) processImage:(Mat&) image
 {
@@ -66,7 +61,7 @@
     if (!calibrated) {
         if (faces.size() < 1) {
             faceCascade.detectMultiScale(image, faces, haarScale, minNeighbors, haarFlags, minSize);
-            NSLog(@"Found %d faces", faces.size());
+            NSLog(@"Found %lu faces", faces.size());
         }
         
         calibrated = true;

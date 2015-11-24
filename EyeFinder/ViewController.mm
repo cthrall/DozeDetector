@@ -9,16 +9,12 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Hello!" message:@"Welcome" delegate:self cancelButtonTitle:@"Continue" otherButtonTitles:nil];
-    [alert show];*/
     
     imageProcessor = [[ImageProcessor alloc] initWithView:imageView];
 }
