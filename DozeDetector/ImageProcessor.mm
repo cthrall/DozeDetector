@@ -1,6 +1,6 @@
 //
 //  ImageProcessor.m
-//  EyeFinder
+//  DozeDetector
 //
 //  Created by Craig Thrall on 11/21/15.
 //  Copyright © 2015 Craig Thrall. All rights reserved.

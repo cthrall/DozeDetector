@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  EyeFinder
+//  DozeDetector
 //
 //  Created by Craig Thrall on 11/1/15.
 //  Copyright © 2015 Craig Thrall. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  EyeFinder
+//  DozeDetector
 //
 //  Created by Craig Thrall on 11/1/15.
 //  Copyright © 2015 Craig Thrall. All rights reserved.
@@ -15,8 +15,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self styleButton: self.calibrateButton];
+    [self styleButton: self.detectButton];
     imageProcessor = [[ImageProcessor alloc] initWithView:imageView];
+}
+
+- (void)styleButton:(UIButton*)button {
+    [[button layer] setBorderWidth:2.0f];
+    [button setTitleColor: [UIColor blueColor] forState: UIControlStateNormal];
+    [[button layer] setBorderColor:[UIColor blueColor].CGColor];
+    button.layer.cornerRadius = 10;
+    button.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {

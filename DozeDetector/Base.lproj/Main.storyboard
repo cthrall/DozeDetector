@@ -17,8 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfO-jS-qmv">
-                                <rect key="frame" x="20" y="550" width="62" height="30"/>
+                                <rect key="frame" x="8" y="558" width="109" height="42"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Calibrate"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchDown" id="W4j-JF-aIh"/>
@@ -26,12 +27,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ubz-xX-GLy">
-                                <rect key="frame" x="20" y="0.0" width="469" height="533"/>
+                                <rect key="frame" x="0.0" y="0.0" width="426" height="550"/>
                                 <animations/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmg-bx-ALI">
-                                <rect key="frame" x="443" y="550" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmg-bx-ALI">
+                                <rect key="frame" x="258" y="558" width="97" height="41"/>
                                 <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Detect"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchDown" id="3m8-E1-peK"/>
@@ -42,6 +44,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="calibrateButton" destination="MfO-jS-qmv" id="544-Yg-7UV"/>
+                        <outlet property="detectButton" destination="cmg-bx-ALI" id="DHh-Oa-Vdz"/>
                         <outlet property="imageView" destination="ubz-xX-GLy" id="bRb-PF-I3Z"/>
                     </connections>
                 </viewController>
